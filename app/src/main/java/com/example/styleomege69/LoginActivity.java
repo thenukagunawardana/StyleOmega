@@ -62,6 +62,32 @@ public class LoginActivity extends AppCompatActivity
                 LoginUser();
             }
         });
+        AdminLink.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                LoginAccountbtn.setText("Login Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                NotAdminLink.setVisibility(View.VISIBLE);
+                parentDBname="Admins";
+            }
+        });
+
+        NotAdminLink.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                LoginAccountbtn.setText("Login");
+                AdminLink.setVisibility(View.VISIBLE);
+                NotAdminLink.setVisibility(View.INVISIBLE);
+                parentDBname="Users";
+
+
+            }
+        });
+
     }
 
     private void LoginUser()
@@ -113,11 +139,22 @@ public class LoginActivity extends AppCompatActivity
                     {
                         if (usersData.getPassword().equals(password))
                         {
-                            Toast.makeText(LoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
+                            if (parentDBname.equals("Admins"))
+                            {
+                                Toast.makeText(LoginActivity.this, "Welcome Admin you are Logged In Successfully", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
 
-                            Intent intent= new Intent(LoginActivity.this,HomeActivity.class);
-                            startActivity(intent);
+                                Intent intent= new Intent(LoginActivity.this,AdminAddNewProductActivity.class);
+                                startActivity(intent);
+                            }
+                            else if (parentDBname.equals("Users"))
+                            {
+                                Toast.makeText(LoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent= new Intent(LoginActivity.this,HomeActivity.class);
+                                startActivity(intent);
+                            }
                         }
                         else
                         {
