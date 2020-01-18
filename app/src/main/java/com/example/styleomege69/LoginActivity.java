@@ -9,23 +9,32 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.styleomege69.Model.Users;
+import com.example.styleomege69.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import io.paperdb.Paper;
+
 public class LoginActivity extends AppCompatActivity
 {
     private Button LoginAccountbtn;
     private EditText inputName,inputPassword;
     private ProgressDialog loadingBar;
+    private TextView AdminLink,NotAdminLink;
+
 
     private String parentDBname="Users";
+
+    private CheckBox RememberMeBox;
 
 
     @Override
@@ -37,7 +46,13 @@ public class LoginActivity extends AppCompatActivity
         LoginAccountbtn=(Button)findViewById(R.id.login_button);
         inputName=(EditText)findViewById(R.id.username_login);
         inputPassword=(EditText)findViewById(R.id.password_login);
+        AdminLink=(TextView)findViewById(R.id.adminPanel_link);
+        NotAdminLink=(TextView)findViewById(R.id.notAdminpanel_link);
         loadingBar= new ProgressDialog(this);
+
+        RememberMeBox=(CheckBox)findViewById(R.id.checkBox);
+        Paper.init(this);
+
 
         LoginAccountbtn.setOnClickListener(new View.OnClickListener()
         {
@@ -75,6 +90,13 @@ public class LoginActivity extends AppCompatActivity
 
     private void AllowAccessUser(final String name, final String password)
     {
+        if (RememberMeBox.isChecked())
+        {
+            Paper.book().write(Prevalent.UserNameKey,name);
+            Paper.book().write(Prevalent.UserPasswordKey,password);
+        }
+
+
         final DatabaseReference Rootref;
         Rootref= FirebaseDatabase.getInstance().getReference();
 
@@ -96,8 +118,11 @@ public class LoginActivity extends AppCompatActivity
 
                             Intent intent= new Intent(LoginActivity.this,HomeActivity.class);
                             startActivity(intent);
-
-
+                        }
+                        else
+                        {
+                            loadingBar.dismiss();
+                            Toast.makeText(LoginActivity.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

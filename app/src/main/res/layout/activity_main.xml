@@ -34,8 +34,8 @@
     <Button
         android:id="@+id/register_Home"
         android:layout_width="171dp"
-        android:layout_height="72dp"
-        android:text="Register Here"
+        android:layout_height="95dp"
+        android:text="Not Registered Already? Click Here"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,4 +43,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_Home"
         app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
+        android:id="@+id/home_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:text="StyleOmega Fashion Store"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_Home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
