@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/background3"
     tools:context=".MainActivity">
 
     <ImageView
@@ -24,6 +24,7 @@
         android:layout_width="171dp"
         android:layout_height="72dp"
         android:text="Login Here"
+        android:background="@drawable/inputs_design"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +37,7 @@
         android:layout_width="171dp"
         android:layout_height="95dp"
         android:text="Not Registered Already? Click Here"
+        android:background="@drawable/inputs_design"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +52,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"
         android:text="StyleOmega Fashion Store"
+        android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/login_Home"
         app:layout_constraintEnd_toEndOf="parent"
