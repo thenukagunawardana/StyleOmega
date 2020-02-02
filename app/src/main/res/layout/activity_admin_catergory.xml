@@ -28,7 +28,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/men_add"
@@ -46,7 +46,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/female_add"
@@ -64,7 +64,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/shoes_add"
@@ -73,6 +73,34 @@
             android:src="@drawable/shoes"
             />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/check_orders_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/admin_logout_btn"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Check New Orders"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+
+        />
+
+    <Button
+        android:id="@+id/admin_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="LogOut"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+
+        />
 
 
 

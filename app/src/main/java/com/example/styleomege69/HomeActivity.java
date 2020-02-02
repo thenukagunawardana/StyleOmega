@@ -66,12 +66,14 @@ public class HomeActivity extends AppCompatActivity
         toolbar.setTitle("Home");
 
         setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view)
+            {
+                Intent intent=new Intent(HomeActivity.this,CartActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -116,7 +118,8 @@ public class HomeActivity extends AppCompatActivity
                 .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder>
-                adapter=new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+                adapter=new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options)
+        {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, final int i, @NonNull final Products model)
             {
@@ -183,10 +186,13 @@ public class HomeActivity extends AppCompatActivity
 
         if (id==R.id.nav_cart)
         {
-
+            Intent intent=new Intent(HomeActivity.this,CartActivity.class);
+            startActivity(intent);
         }
-        else if (id==R.id.nav_orders)
+        else if (id==R.id.nav_search)
         {
+            Intent intent= new Intent(HomeActivity.this,SearchProductsActivity.class);
+            startActivity(intent);
 
         }
         else if (id==R.id.nav_categories)
