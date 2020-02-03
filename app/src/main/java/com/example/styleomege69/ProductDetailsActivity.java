@@ -30,11 +30,12 @@ import java.util.HashMap;
 
 public class ProductDetailsActivity extends AppCompatActivity
 {
-    private Button addToCartButton;
+    private Button addToCartButton,ShareButton;
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productDescription,productName,productPrice;
     private String productID ="",state="normal";
+    private Products currentProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +52,8 @@ public class ProductDetailsActivity extends AppCompatActivity
         productName=(TextView)findViewById(R.id.product_name_details);
         productPrice=(TextView)findViewById(R.id.product_price_details);
 
+        ShareButton=(Button)findViewById(R.id.shareProduct);
+
         getProductDetails();
 
         addToCartButton.setOnClickListener(new View.OnClickListener()
@@ -66,6 +69,22 @@ public class ProductDetailsActivity extends AppCompatActivity
                 {
                     addToCartList();
                 }
+            }
+        });
+
+        ShareButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                String message=currentProduct.getPname()+"\n"+currentProduct.getDescription()+"\n"+currentProduct.getPrice();
+                intent.putExtra(Intent.EXTRA_TEXT,message);
+                intent.setType("text/plain");
+                Intent share=Intent.createChooser(intent,null);
+                startActivity(share);
+
             }
         });
 
@@ -159,6 +178,7 @@ public class ProductDetailsActivity extends AppCompatActivity
                     productDescription.setText(products.getDescription());
                     productPrice.setText(products.getPrice());
                     Picasso.get().load(products.getImage()).into(productImage);
+                    currentProduct=products;
 
                 }
             }
